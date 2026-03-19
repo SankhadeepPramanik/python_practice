@@ -1,16 +1,22 @@
-class Solution:
+class Solution():
     def longestString(self, words):
+        # code here
         word_set = set(words)
-        words.sort()  # lexicographically
+        words.sort()  # sort lexicographically
         longest = ""
-        
+    
         for word in words:
-            # check if all prefixes exist
-            if all(word[:i] in word_set for i in range(1, len(word))):
-                # update if longer or same length but lexicographically smaller
-                if len(word) > len(longest) or (len(word) == len(longest) and word < longest):
+            # check if all prefixes of word are in the set
+            valid = True
+            for i in range(1, len(word)):
+                if word[:i] not in word_set:
+                    valid = False
+                    break
+            if valid:
+                # choose longest, or lexicographically smallest if tie
+                if len(word) > len(longest):
                     longest = word
-                    
+    
         return longest
 
 solution = Solution()
