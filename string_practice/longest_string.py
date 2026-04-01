@@ -22,3 +22,4 @@ class Solution():
 solution = Solution()
 print(solution.longestString(["a", "banana", "app", "appl", "ap", "apply", "apple"]))  # Output: "apple"    
 print(solution.longestString(["w", "wo", "wor", "worl", "world"]))  # Output: "world"
+print(solution.longestString(["a", "bo", "bcu"]))  # Output: "a" (or "b" or "c")
