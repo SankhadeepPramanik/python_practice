@@ -1,44 +1,44 @@
-													sliding window:(l -----> r -----> r -----> r)
-                                               -------------------------
-What Is Sliding Window?
+# 									sliding window:(l -----> r -----> r -----> r)
+#                                                -------------------------
+# What Is Sliding Window?
 
-It’s a two-pointer technique where a window (subarray / substring) expands and shrinks while moving through the array once.
-✅ When SHOULD You Use Sliding Window?
-Array / String is CONTIGUOUS
+# It’s a two-pointer technique where a window (subarray / substring) expands and shrinks while moving through the array once.
+# ✅ When SHOULD You Use Sliding Window?
+# Array / String is CONTIGUOUS
 
-You are dealing with:
+# You are dealing with:
 
-Subarray
+# Subarray
 
-Substring
+# Substring
 
-Continuous segment
+# Continuous segment
 
-❌ Not for subsequence
-❌ Not for picking random elements
-------------------------------------------------------------------------------------------------------
-fixed window:
---------------------------------------------------------------------------------------------------------
-initialize window_sum = 0
-initialize max_result (or other required value)
+# ❌ Not for subsequence
+# ❌ Not for picking random elements
+# ------------------------------------------------------------------------------------------------------
+# fixed window:
+# --------------------------------------------------------------------------------------------------------
+# initialize window_sum = 0
+# initialize max_result (or other required value)
 
-# Set up the initial window
-for i from 0 to k - 1:
-    window_sum += arr[i]
+# # Set up the initial window
+# for i from 0 to k - 1:
+#     window_sum += arr[i]
 
-max_result = window_sum   # Initialize result
+# max_result = window_sum   # Initialize result
 
-# Slide the window across the array
-for i from k to arr.length - 1:
-    window_sum += arr[i]-arr[i - k]     # add new element   # remove old element
+# # Slide the window across the array
+# for i from k to arr.length - 1:
+#     window_sum += arr[i]-arr[i - k]     # add new element   # remove old element
 
-    update max_result (or other computation)
+#     update max_result (or other computation)
 
-return max_result (or other required value)
+# return max_result (or other required value)
 
-example:
-Find the maximum sum of a subarray of size k
------------------------------------------------------
+# example:
+# Find the maximum sum of a subarray of size k
+# ----------------------------------------------------
 def max_sum_subarray(arr, k):
     window_sum = 0
 
@@ -55,42 +55,42 @@ def max_sum_subarray(arr, k):
         max_sum = max(max_sum, window_sum)
 
     return max_sum
----------------------------------------------------------------------------------------------------------------------
-dynamic window:
----------------------------------------------------------------------------------------------------------------------
-initialize left = 0
-initialize window_state (sum, count, frequency map, etc.)
-initialize min_or_max_result
+# ---------------------------------------------------------------------------------------------------------------------
+# dynamic window:
+# ---------------------------------------------------------------------------------------------------------------------
+# initialize left = 0
+# initialize window_state (sum, count, frequency map, etc.)
+# initialize min_or_max_result
 
-for right from 0 to arr.length - 1:
-    update window_state to include arr[right]   # Expand the window
+# for right from 0 to arr.length - 1:
+#     update window_state to include arr[right]   # Expand the window
 
-    while window_state violates the condition:
-        update min_or_max_result (if needed)
-        update window_state to exclude arr[left]  # Shrink the window
-        move left pointer forward
+#     while window_state violates the condition:
+#         update min_or_max_result (if needed)
+#         update window_state to exclude arr[left]  # Shrink the window
+#         move left pointer forward
 
-return min_or_max_result
+# return min_or_max_result
 
-Sliding Window Works
+# Sliding Window Works
 
-Because:
+# Because:
 
-Subarray = continuous
+# Subarray = continuous
 
-All numbers are positive
+# All numbers are positive
 
-Key rule:
+# Key rule:
 
-If sum is too small → expand window (move r)
+# If sum is too small → expand window (move r)
 
-If sum is too large → shrink window (move l)
+# If sum is too large → shrink window (move l)
 
-This works only because values are positive
-ex:
------------------------------------
-    “Subarray with given sum”
-    -----------------------------
+# This works only because values are positive
+# ex:
+# -----------------------------------
+#     “Subarray with given sum”
+#     -----------------------------
 class Solution:
     def subarraySum(self, arr, target):
         n = len(arr)
@@ -110,9 +110,9 @@ class Solution:
         
         return [-1]
 
---------------------------------------------------
-Longest Substring Without Repeating Characters (Python)
---------------------------------------------------------------
+# --------------------------------------------------
+# Longest Substring Without Repeating Characters (Python)
+# --------------------------------------------------------------
 def lengthOfLongestSubstring(s: str) -> int:
     char_set = set()
     left = 0
@@ -128,8 +128,8 @@ def lengthOfLongestSubstring(s: str) -> int:
 
     return max_len
     
-ABCABCAD
-AXXRS
+# ABCABCAD
+# AXXRS
 
 class Solution:
     def longestKSubstr(self, s, k):
